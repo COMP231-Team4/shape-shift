@@ -1,15 +1,18 @@
 import React from 'react';
 import '../styles/Header.css';
+import { Link } from 'react-router-dom';
+
 
 function Header() {
     return (
         <header className="header">
             <img src="ShapeShiftLogo.png" alt="ShapeShift Logo" />
             <nav className="nav-links">
-                <a href="/">Home</a>
-                <a href="/business">Business</a>
-                <a href="/features">Features</a>
-                <a href="/pricing">Pricing</a>
+                <Link to="/">Home</Link>
+                <Link to="/workouts">Workouts</Link>
+                <Link to="/blog">Blog</Link>
+                <Link to="/nutrition">Nutrition</Link>
+                <Link to="/products">Products</Link>
             </nav>
 
             <div className="action-buttons">
