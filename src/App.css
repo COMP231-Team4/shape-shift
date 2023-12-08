@@ -138,3 +138,47 @@
   font-size: 1rem;
   margin-bottom: 10px;
 }
+
+.meal-plan {
+  text-align: center;
+}
+
+.meal-plan h1 {
+  margin-bottom: 20px;
+}
+
+.meal-plan-items {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.meal-plan-day {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px;
+  text-align: left;
+}
+
+.meal-plan-item {
+  margin-top: 15px;
+}
+
+.meal-plan-item .text-content {
+  padding: 10px;
+}
+
+.meal-plan-day h2 {
+  position: relative;
+  text-align: center;
+}
+
+.meal-plan-day h2::after {
+  content: '';
+  position: absolute;
+  width: calc(100% - 60px);
+  border-bottom: 1px solid #ccc;
+  bottom: 0px;
+  left: 20px;
+}

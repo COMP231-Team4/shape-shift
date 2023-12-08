@@ -1,5 +1,6 @@
 // src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -9,8 +10,8 @@ import Workouts from './components/Workouts';
 import Blog from './components/Blog';
 import Nutrition from './components/Nutrition';
 import Products from './components/Products';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
+import MealPlan from './components/MealPlan';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/mealplan" element={<MealPlan />} />
         <Route path="/products" element={<Products />} />
       </Routes>
     </Router>
