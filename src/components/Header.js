@@ -13,12 +13,13 @@ function Header() {
                 <Link to="/blog">Blog</Link>
                 <Link to="/nutrition">Nutrition</Link>
                 <Link to="/products">Products</Link>
+                <Link to="/login" className="btn-login">Login</Link>
+
             </nav>
 
-            <div className="action-buttons">
+             {/* <div className="action-buttons">
                 <button className="free-trial-button">Free Trial</button>
-                <button className="sign-in-button">Sign In</button>
-            </div>
+            </div> */}
         </header>
     );
 }
