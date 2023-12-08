@@ -182,3 +182,19 @@
   bottom: 0px;
   left: 20px;
 }
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-content {
+  text-align: center;
+}

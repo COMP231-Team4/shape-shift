@@ -1,7 +1,13 @@
 import React from 'react';
 import '../styles/Hero.css';
+import { Link } from 'react-router-dom';
+
+
 
 function Hero() {
+    const handleExploreClick = () => {
+        window.open('/mealplan');
+    };
     return (
         <div className="hero">
             <div className="hero-content">
@@ -9,7 +15,7 @@ function Hero() {
                     <h1>Ready. Set.</h1>
                     <h1>Go!</h1>
                     <p>Our goal is to spark your enthusiasm for a healthier, more resilient version of yourself.</p>
-                    <button>Explore</button>
+                    <button onClick={handleExploreClick}>Explore</button>
                     <p>100K people have joined</p>
                     <p>Be the best version of yourself.</p>
                 </div>
