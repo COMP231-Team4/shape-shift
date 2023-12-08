@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,18 +17,46 @@ import Nutrition from "./components/Nutrition";
 import Products from "./components/Products";
 import Login from "./components/Login";
 import MealPlan from "./components/MealPlan";
-
+import axios from "axios";
+const API = "http://localhost:3001";
 function App() {
   let navigate = useNavigate();
-  function handleLogin(user) {
-    navigate("/home");
+  const [authenticated, setauthenticated] = useState(
+    localStorage.getItem(localStorage.getItem("authenticated") || false)
+  );
+  async function handleLogin(user) {
+    try {
+      const result = await axios.post(`${API}/api/login`, user);
+      if (result.status === 200) {
+        setauthenticated(true);
+        localStorage.setItem("authenticated", true);
+        navigate("/");
+      } else {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+      navigate("/login");
+    }
   }
+
+  function handleLogout() {
+    setauthenticated(false);
+    localStorage.setItem("authenticated", false);
+    navigate("/login");
+  }
+
+  useEffect(() => {
+    if (!authenticated) {
+      navigate("/login");
+    }
+  }, [navigate]);
   return (
     <>
-      <Header />
+      <Header onLogout={handleLogout} authenticated={authenticated} />
       <Routes>
-        <Route path="/" element={<Login onLogin={handleLogin} />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/blog" element={<Blog />} />

@@ -13,7 +13,7 @@ function Login({ onLogin }) {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <label for="username">Username:</label>
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
           id="username"
@@ -23,7 +23,7 @@ function Login({ onLogin }) {
           required
         />
 
-        <label for="password">Password:</label>
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
           id="password"
@@ -32,7 +32,7 @@ function Login({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" class="login-button">
+        <button type="submit" className="login-button">
           Login
         </button>
       </form>
