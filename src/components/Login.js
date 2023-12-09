@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Login.css";
 
 function Login({ onLogin }) {
@@ -32,6 +33,10 @@ function Login({ onLogin }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+      <p>
+        Don't have an account?{" "}
+        <Link to="/register" style={{ color: "purple" }}>Registe Here</Link>
+      </p>
         <button type="submit" className="login-button">
           Login
         </button>
