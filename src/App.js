@@ -41,9 +41,9 @@ function App() {
   }
 
   function handleLogout() {
+    navigate("/login");
     setauthenticated(false);
     localStorage.setItem("authenticated", false);
-    navigate("/login");
   }
 
   useEffect(() => {
