@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 
 const MealPlanOptions = [
@@ -96,6 +96,17 @@ const MealPlanOptions = [
 
 function MealPlan() {
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const [feedback, setFeedback] = useState('');
+
+    const handleFeedbackChange = (e) => {
+      setFeedback(e.target.value);
+    };
+
+    const handleSubmitFeedback = () => {
+      alert('Thank you! Your feedback will be reviewed in the next 24 hours.');
+      setFeedback('');
+    };
+
     return (
         <div className="meal-plan">
           <h1>Weekly Meal Plan</h1>
@@ -108,14 +119,24 @@ function MealPlan() {
                     <div className="text-content">
                       <h3>{meal.meal}</h3>
                       <p>{meal.recipe}</p>
-                    </div>
-                  </div>
-                ))}
+                      </div>
               </div>
             ))}
           </div>
-        </div>
-      );
-    }
-    
-    export default MealPlan;
+        ))}
+      </div>
+      <div className="feedback-box">
+        <h2>Feedback</h2>
+        <p>Please provide your feedback on the weekly meal plan</p>
+        <textarea
+          value={feedback}
+          onChange={handleFeedbackChange}
+          placeholder="Share your feedback"
+        ></textarea>
+        <button onClick={handleSubmitFeedback}>Submit Feedback</button>
+      </div>
+    </div>
+  );
+};
+
+export default MealPlan;

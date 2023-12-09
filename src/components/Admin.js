@@ -20,12 +20,16 @@ function Admin() {
           <thead>
             <tr>
               <th>User</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {usernames.map((username, index) => (
               <tr key={index}>
                 <td>{username}</td>
+                <td>
+                  <button className="delete-btn">Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>

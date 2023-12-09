@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const WorkoutExample = [
     {
@@ -32,6 +32,16 @@ const WorkoutExample = [
   ];
 
 function Workouts() {
+  const [feedback, setFeedback] = useState('');
+
+  const handleFeedbackChange = (event) => {
+    setFeedback(event.target.value);
+  };
+
+  const handleSubmitFeedback = () => {
+    alert('Thank you! Your questions will be reviewed shortly and we will reach out to you in the next 24 hours.');
+    setFeedback('');
+  };
     return (
         <div className="workouts">
           <h1>Workout Programs</h1>
@@ -44,12 +54,22 @@ function Workouts() {
                 </div>
                 <div className="">
                   <img src={workout.imageUrl} alt={workout.altText} />
-                </div>
-              </div>
-            ))}
+                  </div>
           </div>
-        </div>
-      );
-    }
+        ))}
+      </div>
+      <div className="feedback-box">
+        <h2>Do you have any questions?</h2>
+        <p>Unsure how to do an exercise or need to clarify your form? Let us know below and we will reach out to you shortly.</p>
+        <textarea
+          placeholder="Leave your question here."
+          value={feedback}
+          onChange={handleFeedbackChange}
+        ></textarea>
+        <button onClick={handleSubmitFeedback}>Submit</button>
+      </div>
+    </div>
+  );
+}
 
 export default Workouts;
