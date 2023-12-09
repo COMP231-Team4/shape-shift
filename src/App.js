@@ -56,6 +56,14 @@ function App() {
     }
   }
 
+  async function deleteUser(id) {
+    try {
+      await axios.delete(`${API}/api/user/${id}`);
+    } catch (error) {
+      console.log(`ERROR: loadUsers: ${error}`);
+    }
+  }
+
   async function handleRegister(user) {
     try {
       const result = await axios.post(`${API}/api/register`, user);
@@ -104,7 +112,10 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/mealplan" element={<MealPlan />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/admin" element={<Admin users={users} />} />
+        <Route
+          path="/admin"
+          element={<Admin users={users} deleteUser={deleteUser} />}
+        />
       </Routes>
     </>
   );

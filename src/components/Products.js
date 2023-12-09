@@ -1,18 +1,19 @@
 import React from 'react';
+import '../App.css';
 
 const sampleProducts = [
   {
     id: 1,
-    title: 'Kettlebell - 20 lb',
+    title: '20lb Kettlebell',
     description: 'Sturdy kettlebell perfect for a variety of strength-building exercises.',
-    price: '$39.99',
+    price: '$59.99',
     imageUrl: 'kettlebell-image.jpeg',
     altText: 'Kettlebell Image',
   },
   {
     id: 2,
     title: 'Barbell Foam Pad',
-    description: 'A soft and comfortable foam pad that wraps around barbells to prevent discomfort or injuries during squats or hip thrusts.',
+    description: 'A soft foam pad that wraps around barbells to prevent discomfort during squats or hip thrusts.',
     price: '$19.99',
     imageUrl: 'barbellpad-image.png',
     altText: 'Barbell Foam Pad Image',
@@ -39,7 +40,6 @@ function Product() {
   return (
     <div className="product-page">
       <h1>Products</h1>
-      <div className="product-container">
       <div className="products">
         {sampleProducts.map((product) => (
           <div key={product.id} className="product">
@@ -53,7 +53,6 @@ function Product() {
             </div>
           </div>
         ))}
-      </div>
       </div>
     </div>
   );
