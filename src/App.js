@@ -17,6 +17,7 @@ import Nutrition from "./components/Nutrition";
 import Products from "./components/Products";
 import Login from "./components/Login";
 import MealPlan from "./components/MealPlan";
+import Admin from "./components/Admin";
 import axios from "axios";
 const API = "http://localhost:3001";
 function App() {
@@ -89,6 +90,7 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/mealplan" element={<MealPlan />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
   );

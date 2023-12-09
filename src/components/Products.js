@@ -1,19 +1,62 @@
 import React from 'react';
 
+const sampleProducts = [
+  {
+    id: 1,
+    title: 'Kettlebell - 20 lb',
+    description: 'Sturdy kettlebell perfect for a variety of strength-building exercises.',
+    price: '$39.99',
+    imageUrl: 'kettlebell-image.jpeg',
+    altText: 'Kettlebell Image',
+  },
+  {
+    id: 2,
+    title: 'Barbell Foam Pad',
+    description: 'A soft and comfortable foam pad that wraps around barbells to prevent discomfort or injuries during squats or hip thrusts.',
+    price: '$19.99',
+    imageUrl: 'barbellpad-image.png',
+    altText: 'Barbell Foam Pad Image',
+  },
+  {
+    id: 3,
+    title: 'Foam Roller',
+    description: 'Foam roller for deep tissue massage, aiding in muscle recovery.',
+    price: '$29.99',
+    imageUrl: 'roller-image.png',
+    altText: 'Foam Roller Image',
+  },
+  {
+    id: 4,
+    title: 'Resistance Bands',
+    description: 'A set of resistance bands with different levels of resistance for full-body workouts.',
+    price: '$15.99',
+    imageUrl: 'band-image.png',
+    altText: 'Resistance Bands Image',
+  },
+];
+
 function Product() {
-    return (
-        <div className="hero">
-            <div className="hero-content">
-                <div className="text-content">
-                    <h1>Products</h1>
-                    <p>Helping you reach our goals faster</p>
-                </div>
-                <div className="feature-image">
-                    <img src="online-shopping.jpeg" alt="Exercise Illustration" />
-                </div>
+  return (
+    <div className="product-page">
+      <h1>Products</h1>
+      <div className="product-container">
+      <div className="products">
+        {sampleProducts.map((product) => (
+          <div key={product.id} className="product">
+            <div className="product-content">
+              <h2>{product.title}</h2>
+              <p>{product.description}</p>
+              <p>Price: {product.price}</p>
             </div>
-        </div>
-    );
+            <div className="product-image">
+              <img src={product.imageUrl} alt={product.altText} />
+            </div>
+          </div>
+        ))}
+      </div>
+      </div>
+    </div>
+  );
 }
 
 export default Product;
