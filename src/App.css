@@ -198,3 +198,69 @@
 .text-content {
   text-align: center;
 }
+
+.admin-container {
+  text-align: center;
+}
+
+.table-container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.user-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.user-table th,
+.user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+.product-page {
+  text-align: center;
+}
+
+.product-container {
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+}
+
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 20px;
+}
+
+.product-content h2 {
+  margin-bottom: 10px;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+}
