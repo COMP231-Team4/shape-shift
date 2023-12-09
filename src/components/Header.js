@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 
 function Header(props) {
   const { onLogout, authenticated } = props;
+
   return (
     <header className="header">
       <img src="ShapeShiftLogo.png" alt="ShapeShift Logo" />
@@ -13,7 +14,11 @@ function Header(props) {
         <Link to="/blog">Blog</Link>
         <Link to="/nutrition">Nutrition</Link>
         <Link to="/products">Products</Link>
-        <Link to="/admin">Admin</Link>
+        {JSON.parse(localStorage.getItem("userLocal")) &&
+          JSON.parse(localStorage.getItem("userLocal")).admin && (
+            <Link to="/admin">Admin</Link>
+          )}
+
         {!authenticated ? (
           <Link to="/login" className="btn-login">
             Login
@@ -24,7 +29,6 @@ function Header(props) {
           </Link>
         )}
       </nav>
-
     </header>
   );
 }
