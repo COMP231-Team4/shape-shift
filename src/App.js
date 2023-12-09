@@ -21,15 +21,36 @@ import axios from "axios";
 const API = "http://localhost:3001";
 function App() {
   let navigate = useNavigate();
-  const [authenticated, setauthenticated] = useState(
-    localStorage.getItem(localStorage.getItem("authenticated") || false)
-  );
+
   async function handleLogin(user) {
     try {
       const result = await axios.post(`${API}/api/login`, user);
       if (result.status === 200) {
-        setauthenticated(true);
-        localStorage.setItem("authenticated", true);
+        const myObject = {
+          username: result.data.username,
+          admin: result.data.admin,
+        };
+        localStorage.setItem("userLocal", JSON.stringify(myObject));
+        navigate("/");
+      } else {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+      navigate("/login");
+    }
+  }
+
+  async function handleRegister(user) {
+    try {
+      const result = await axios.post(`${API}/api/register`, user);
+      if (result.status === 200) {
+        const myObject = {
+          username: result.username,
+          admin: result.admin,
+        };
+
+        localStorage.setItem("userLocal", JSON.stringify(myObject));
         navigate("/");
       } else {
         navigate("/login");
@@ -42,20 +63,25 @@ function App() {
 
   function handleLogout() {
     navigate("/login");
-    setauthenticated(false);
-    localStorage.setItem("authenticated", false);
+    localStorage.clear();
   }
 
   useEffect(() => {
-    if (!authenticated) {
+    if (!localStorage.getItem("userLocal")) {
       navigate("/login");
     }
   }, [navigate]);
   return (
     <>
-      <Header onLogout={handleLogout} authenticated={authenticated} />
+      <Header
+        onLogout={handleLogout}
+        authenticated={localStorage.getItem("userLocal")}
+      />
       <Routes>
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route
+          path="/login"
+          element={<Login onLogin={handleLogin} onRegister={handleRegister} />}
+        />
         <Route path="/" element={<Home />} />
 
         <Route path="/workouts" element={<Workouts />} />
