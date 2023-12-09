@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-function Admin() {
+function Admin(props) {
+  const { users } = props;
   let navigate = useNavigate();
   useEffect(() => {
     if (
@@ -11,7 +12,6 @@ function Admin() {
     }
   });
 
-  const usernames = ["user1", "user2", "user3"];
   return (
     <div className="admin-container">
       <h1>Users Information Master List</h1>
@@ -23,11 +23,12 @@ function Admin() {
             </tr>
           </thead>
           <tbody>
-            {usernames.map((username, index) => (
-              <tr key={index}>
-                <td>{username}</td>
-              </tr>
-            ))}
+            {users &&
+              users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user.username}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

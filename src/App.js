@@ -21,6 +21,7 @@ import Admin from "./components/Admin";
 import axios from "axios";
 const API = "http://localhost:3001";
 function App() {
+  const [users, setUsers] = useState([]);
   let navigate = useNavigate();
 
   async function handleLogin(user) {
@@ -39,6 +40,19 @@ function App() {
     } catch (error) {
       console.log(error);
       navigate("/login");
+    }
+  }
+
+  useEffect(() => {
+    loadUsers();
+  }, [users]);
+
+  async function loadUsers() {
+    try {
+      const result = await axios.get(`${API}/api/users`);
+      setUsers(result.data);
+    } catch (error) {
+      console.log(`ERROR: loadUsers: ${error}`);
     }
   }
 
@@ -90,7 +104,7 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/mealplan" element={<MealPlan />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<Admin users={users} />} />
       </Routes>
     </>
   );
